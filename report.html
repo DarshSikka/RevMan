@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+    <style>
+        table, th, td {
+  border: 1px solid black;
+}
+table{
+    width:100%;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+ tr:hover {background-color: #f5f5f5;}
+ #header{
+     background-color:green;
+ }
+ .right{
+            text-align:right
+        }
+
+    </style>
+    <link rel='icon' href='Logo.png'>
+</head>
+<body>
+    <div class="right"><img src="Logo.png"><br></div>
+    <h1>Report Card </h1>
+    <table id="report">
+        <tr id="header">
+            <th>Question</th>
+            <th>Answer</th>
+            <th>Your Answer</th>
+            <th>   Result   </th>
+        </tr>
+    </table>
+    <br><button id="butt"onclick="printer()">Download PDF</button>
+    <script>
+        y_ans=JSON.parse(localStorage.getItem('report_card'));
+        paper=JSON.parse(localStorage.getItem('paper'));
+        nums=JSON.parse(localStorage.getItem('nums'));
+        questions=Object.keys(paper);
+        console.log(y_ans)
+        answers=[]
+        for(b=0; b<questions.length; b++){
+            answers.push(paper[questions[b]])
+        }
+        for(c=0; c<questions.length; c++){
+            question=questions[nums[c]];
+            marked_ans=y_ans[c];
+            answer=answers[nums[c]];
+            if(answer.toUpperCase()==marked_ans.toUpperCase()){
+                tc=' &#x2705'
+            }
+            else{
+                tc='&#10060;'
+            }
+            tr="<tr><td>"+question+"</td><td>"+answer+"</td><td>"+marked_ans+"</td><td>"+tc+"</td></tr>"
+            document.getElementById('report').innerHTML+=tr
+        }
+        function printer(){
+            document.getElementById('butt').style.display='none';
+            print()
+        }
+    </script>
+</body>
+</html>

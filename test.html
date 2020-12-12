@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body{
+        background-color:blue;
+        color:yellow
+    }
+    button, input{
+        height:100px;
+        width:200px;
+        font-size:30px;
+    }
+    h3{
+        font-size: 30pt;
+    }
+    .right{
+            text-align:right
+        }
+</style>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <title>Test page- Revman</title>
+    <link rel='icon' href='Logo.png'>
+</head>
+<body>
+    <div class="right"><img src="Logo.png"><br></div>
+    <center>
+    <h1>A test is going on </h1>
+    <div id="durator">
+    <p>Question:<b id="Q"></b></p><br>
+    <input id="A" placeholder="Answer">
+<br><br>
+    <button onclick="om()">Submit</button>
+    </div>
+    <h3 id="result"></h3>
+    <H3 id="rts"></H3>
+    </center>
+     <script>
+         //Setup questio paper+Answer key
+//x
+//
+         //
+         wrong_answers={};
+         m=localStorage.getItem('testid')
+         paper=JSON.parse(localStorage.getItem(m));
+         y_answer=[];
+         console.log(paper)
+         answers=new Array();
+         questions=Object.keys(paper)
+         for(b=0; b<questions.length; b++){
+             answers.push(paper[questions[b]]);
+         }
+         var score=0;
+         attempts=questions.length-1
+var ind=0
+numbers=[];
+for(a=0; a<questions.length; a++){
+    numbers.push(a);
+}
+numbers = numbers.sort(() => Math.random() - 0.5)
+
+         //First Question Mechanics
+         //
+         //
+         //
+         //
+         //
+         //
+         q=questions[numbers[ind]]
+
+         document.getElementById('Q').innerHTML=q
+         //LOOPING
+//
+//
+//
+         //
+         function om(){
+             if(attempts!=0){
+                y_answer.push(document.getElementById('A').value)
+                console.log(y_answer)
+           if(document.getElementById('A').value.toUpperCase()==paper[q].toUpperCase()){
+               console.log(document.getElementById('A').value);
+               console.log(paper[q])
+               score+=1
+               ind+=1
+               attempts-=1
+           }
+           else{
+            console.log(document.getElementById('A').value);
+               console.log(paper[q])
+               score+=0
+               ind+=1
+               attempts-=1
+           }
+
+         q=questions[numbers[ind]];
+         document.getElementById('Q').innerHTML=q
+         }
+         
+         else{ 
+            if(document.getElementById('A').value.toUpperCase()==paper[q].toUpperCase()){
+               score+=1
+           }       y_answer.push(document.getElementById('A').value);
+                console.log(y_answer)
+
+            document.getElementById('result').innerHTML='You scored:'+String(score)+"/"+String(questions.length)
+            document.getElementById('rts').innerHTML="<button onclick='nex()'> Report Card</button>"
+         }
+         document.getElementById('A').value=''
+        
+         }
+         function nex(){
+            localStorage.setItem('report_card', JSON.stringify(y_answer));
+            localStorage.setItem('paper', JSON.stringify(paper))
+            localStorage.setItem('nums', JSON.stringify(numbers))
+            window.location='report.html'
+         }
+     </script>
+</body>
+</html>

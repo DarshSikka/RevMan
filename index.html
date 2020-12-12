@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revman</title>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <link rel='icon' href='Logo.png'>
+    <style>
+        body{
+            background-color: yellow;
+        }
+        .op{
+            background-color:red;
+            color:white;
+            width:500pt;
+            height:50pt;
+            font-size:large;
+            margin-top:50pt;
+            margin-bottom:50pt;
+        }
+        .right{
+            text-align:right
+        }
+        b,h1{
+            font-size:36px;
+        }
+    </style>
+</head>
+<body>
+    <span><div class='left'> <b>Revman</b></div><div class="right"><img src="Logo.png"><br></div></span>
+    <button class="op"onclick="nav()">New Q&A</button>
+    <h1> Your Dictations</h1>
+<div id="Dictations">
+
+</div>
+<script>
+    gd={"Schreib den Artikel von Kuli":"Der","Schreib den Artikel von Tasche":"Die","Schreib den Artikel von Tisch":"Der","Schreib den Artikel von Kind":"Das","Schreib den Artikel von Junge":"Der","Schreib den Artikel von Buch":"Das","Schreib den Artikel von Schwester":"Die","Schreib den Artikel von Fernsehen":"Der","Was heißt 'Fish' in Deutsch":"Fisch","Was heißt 'table' in Deutsch":"Tisch"}
+localStorage.setItem('German Dictation (Prebuilt)', JSON.stringify(gd));
+    md={"What is the L.C.M of 10 and 12":"60","ABC is a right angled triangle. If the base is 3cm and the height is 4cm, find the hypotenous.":"5cm","What is the smallest composite number":"4","A car takes 10 Minutes to cover 10KM . What is the speed of the Car in KM/H ":"60KM/H","(a+b)^2= a^2+b^2+x. What is x?":"2ab","What is the square rout of 4?":"2","(8x3x9x0x98768)+(1+2)=":"3","is -3 a whole number?":"no","Ax0=":"0","1 is the _______ of whole numbers":"Multiplicative Identity"}
+    localStorage.setItem('Maths Quiz (Prebuilt)', JSON.stringify(md));
+  var firebaseConfig = {
+    apiKey: "AIzaSyDvOKO9zKSH49tdinUIcGW_niHKRDVWfzE",
+    authDomain: "dictator-46f42.firebaseapp.com",
+    databaseURL: "https://dictator-46f42.firebaseio.com",
+    projectId: "dictator-46f42",
+    storageBucket: "dictator-46f42.appspot.com",
+    messagingSenderId: "23773447215",
+    appId: "1:23773447215:web:11c88029570ae7087872da",
+    measurementId: "G-X3XSP669D6"
+  };
+  firebase.initializeApp(firebaseConfig);
+    function nav(){
+           localStorage.setItem('testToDo', '')
+        window.location='Q&AMAKER.html';
+    }
+    function nav2(navbar){
+           localStorage.setItem('testid', navbar);
+           window.location='test.html';
+    }
+    x=Object.keys(localStorage);
+    for(b=0; b<x.length; b++){
+        if(x[b]!='testid' && x[b]!='report_card' && x[b]!='paper' &&x[b]!='testToDo' &&x[b]!='nums'){
+        htmlLine='<button class="op"name="'+x[b]+'"onclick="nav2(this.name)">'+x[b]+'</button><br>'
+        document.getElementById('Dictations').innerHTML+=htmlLine}
+    }
+</script>
+</body>
+</html>
