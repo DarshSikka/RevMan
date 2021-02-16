@@ -66,7 +66,7 @@ localStorage.setItem('German Dictation (Prebuilt)', JSON.stringify(gd));
     }
     x=Object.keys(localStorage);
     for(b=0; b<x.length; b++){
-        if(x[b]!='testid' && x[b]!='report_card' && x[b]!='paper' &&x[b]!='testToDo' &&x[b]!='nums'){
+        if(x[b]!='testid' && x[b]!='report_card' && x[b]!='paper' &&x[b]!='testToDo' &&x[b]!='nums' &&x[b]!='returning'){
         htmlLine='<button class="op"name="'+x[b]+'"onclick="nav2(this.name)">'+x[b]+'</button><br>'
         document.getElementById('Dictations').innerHTML+=htmlLine}
     }
