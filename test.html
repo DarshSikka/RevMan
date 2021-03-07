@@ -29,6 +29,8 @@
 </head>
 <body>
     <div class="right"><img src="Logo.png"><br></div>
+    <button onclick='publish()'>Publish</button>
+    <p id='pub'></p>
     <center>
     <h1>A test is going on </h1>
     <div id="durator">
@@ -41,12 +43,22 @@
     <H3 id="rts"></H3>
     </center>
      <script>
-         //Setup questio paper+Answer key
-//x
-//
-         //
-         wrong_answers={};
+           var firebaseConfig = {
+    apiKey: "AIzaSyDvOKO9zKSH49tdinUIcGW_niHKRDVWfzE",
+    authDomain: "dictator-46f42.firebaseapp.com",
+    databaseURL: "https://dictator-46f42.firebaseio.com",
+    projectId: "dictator-46f42",
+    storageBucket: "dictator-46f42.appspot.com",
+    messagingSenderId: "23773447215",
+    appId: "1:23773447215:web:11c88029570ae7087872da",
+    measurementId: "G-X3XSP669D6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
          m=localStorage.getItem('testid')
+         wrong_answers={};
+         
          paper=JSON.parse(localStorage.getItem(m));
          y_answer=[];
          console.log(paper)
@@ -57,6 +69,17 @@
          }
          var score=0;
          attempts=questions.length-1
+         function publish(){
+             code='From Public Store Revman '+m+'Numerical Security Code  '+Math.floor(Math.random()*100);
+             firebase.database().ref('/').child(code).update({
+                 qanda:paper
+             });
+             document.getElementById('pub').innerHTML=code;
+         }
+         //Setup questio paper+Answer key
+//x
+//
+         //
 var ind=0
 numbers=[];
 for(a=0; a<questions.length; a++){
@@ -79,6 +102,7 @@ numbers = numbers.sort(() => Math.random() - 0.5)
 //
 //
          //
+
          function om(){
              if(attempts!=0){
                 y_answer.push(document.getElementById('A').value)

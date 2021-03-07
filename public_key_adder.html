@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Key add to dash</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+</head>
+<body>
+    <input id='key'placeholder='public key'>
+    <button onclick='lot()'>Add</button>
+    <script>
+            var firebaseConfig={apiKey: "AIzaSyDvOKO9zKSH49tdinUIcGW_niHKRDVWfzE",
+    authDomain: "dictator-46f42.firebaseapp.com",
+    databaseURL: "https://dictator-46f42.firebaseio.com",
+    projectId: "dictator-46f42",
+    storageBucket: "dictator-46f42.appspot.com",
+    messagingSenderId: "23773447215",
+    appId: "1:23773447215:web:11c88029570ae7087872da",
+    measurementId: "G-X3XSP669D6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+            function lot(){
+        firebase.database().ref('/').child(document.getElementById('key').value).on('value', function (childSnapshot){
+
+    mydata=childSnapshot.val();
+    childKey=childSnapshot.key;
+    localStorage.setItem(childKey, JSON.stringify(mydata['qanda']))
+    window.location='index.html';
+        })
+    }
+    </script>
+</body>
+</html>
