@@ -3,39 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revman</title>
-
-
+    <title>RevMate</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=DotGothic16&display=swap" rel="stylesheet"> 
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <link rel='icon' href='Logo.png'>
     <style>
         body{
-            background-color: yellow;
+            background-image: url(Background-revman.jpeg)
         }
         .op{
             background-color:red;
             color:white;
             width:500pt;
             height:50pt;
-            font-size:large;
+            font-size:30px;
             margin-top:50pt;
             margin-bottom:50pt;
+            font-family:'Akaya Telivigala', cursive;
+
         }
         .right{
             text-align:right
         }
         b,h1{
-            font-size:36px;
+            font-size:56px;
+            font-weight:bolder;
+            color:#ffffff;
+            font-family: 'DotGothic16', sans-serif;
         }
+        .left{
+            float:left;
+            margin-left:150px;
+        }
+        img{
+            border-radius: 70px;
+        }
+
     </style>
 </head>
 <body>
-    <span><div class='left'> <b>Revman</b></div><div class="right"><img src="Logo.png"><br></div></span>
+    <br><br><br><br><br><BR><BR>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class='left'> <b>RevMate</b></div><div class="right"><img src="e.gif"><br></div></span>
     <button class="op"onclick="nav()">New Q&A</button>
     <button onclick='pubnav()'class="op"> Add test using public key </button><br>
-
     <h1> Your Dictations</h1>
 <div id="Dictations">
 
