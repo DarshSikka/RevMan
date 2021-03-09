@@ -42,6 +42,7 @@
     <input id="A" placeholder="Answer">
 <br><br>
     <button onclick="om()">Submit</button>
+    <button onclick='bahadur()'>Home</button>
     </div>
     <h3 id="result"></h3>
     <H3 id="rts"></H3>
@@ -58,6 +59,9 @@
     measurementId: "G-X3XSP669D6"
   };
   // Initialize Firebase
+  function bahadur(){
+      window.location='index.html'
+  }
   firebase.initializeApp(firebaseConfig);
 
          m=localStorage.getItem('testid')
