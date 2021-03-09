@@ -8,10 +8,28 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>
+        body{
+            background-image: url(Background-revman.jpeg);
+        }
+        button,input{
+            margin-top:100px;
+            height:40px;
+            font-size:30px;
+            color:green;
+            background-color:red;
+        }
+        input::placeholder{
+            color:blue;
+        }
+    </style>
 </head>
 <body>
+    <center>
     <input id='key'placeholder='public key'>
     <button onclick='lot()'>Add</button>
+    
+    </center>
     <script>
             var firebaseConfig={apiKey: "AIzaSyDvOKO9zKSH49tdinUIcGW_niHKRDVWfzE",
     authDomain: "dictator-46f42.firebaseapp.com",
