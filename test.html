@@ -78,7 +78,7 @@
          var score=0;
          attempts=questions.length-1
          function publish(){
-             code='From Public Store Revman '+m+'Numerical Security Code  '+Math.floor(Math.random()*100);
+             code='From Public Store Revman '+m+'Numerical Security Code '+Math.floor(Math.random()*100);
              firebase.database().ref('/').child(code).update({
                  qanda:paper
              });
