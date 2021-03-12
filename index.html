@@ -20,7 +20,6 @@
         .op{
             background-image:url(greenbutt.jpeg);
             color:white;
-            width:500pt;
             height:50pt;
             font-size:25px;
             margin-top:30pt;
@@ -29,7 +28,8 @@
 
         }
         .right{
-            text-align:right
+            text-align:right;
+            margin-right:200px;
         }
         b,h1{
             font-size:56px;
@@ -39,10 +39,19 @@
         }
         .left{
             float:left;
-            margin-left:150px;
+            margin-left:210pt;
         }
         img{
-            border-radius: 70px;
+            border-radius: 120pt;
+        }
+        .up{
+            background-image:url(greenbutt.jpeg);
+            color:white;
+            height:50pt;
+            font-size:25px;
+            margin-top:30pt;
+            margin-bottom:50pt;
+            font-family: 'Playfair Display', serif;
         }
 
     </style>
@@ -50,8 +59,8 @@
 <body>
     <br><br><br><br><br><BR><BR>
     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class='left'> <b>RevMate</b></div><div class="right"><img src="e.png"><br></div></span>
-    <button class="op"onclick="nav()">New Q&A</button>
-    <button onclick='pubnav()'class="op"> Add test using public key </button><br>
+    <button class="up"onclick="nav()">New Q&A</button><br>
+    <button onclick='pubnav()'class="up"> Add test using public key </button><br>
     <h1> Your Dictations</h1>
 <div id="Dictations">
 
@@ -88,8 +97,12 @@ localStorage.setItem('German Dictation (Prebuilt)', JSON.stringify(gd));
     x=Object.keys(localStorage);
     for(b=0; b<x.length; b++){
         if(x[b]!='testid' && x[b]!='report_card' && x[b]!='paper' &&x[b]!='testToDo' &&x[b]!='nums' &&x[b]!='returning'){
-        htmlLine='<button class="op"name="'+x[b]+'"onclick="nav2(this.name)">'+x[b]+'</button><br>'
+        htmlLine='<button class="op"name="'+x[b]+'"onclick="nav2(this.name)">'+x[b]+'</button><button id="'+x[b]+'"class="op" style="margin-left:50pt" onclick="nav_to_edit(this.id)">Edit</button><br>'
         document.getElementById('Dictations').innerHTML+=htmlLine}
+    }
+    function nav_to_edit(nam45){
+        localStorage.setItem('last_edit', nam45)
+        window.location='edit.html';
     }
 </script>
 </body>

@@ -40,7 +40,7 @@
         <h1>Questions Maker</h1>
 
     <input value="Untitled Q&A Dictation" id="name"><br>
-    <input type="file" id="uploadfile" onChange="readImage(this)"><b>This should be a '.csv' file. We will take the questions as column 1 and answers at column 2.</b>
+
     <div><input type="text" placeholder="Question" id="Question"><br>
         <input type="text" placeholder="Answer" id="Answer">
         <br>
@@ -53,63 +53,32 @@
   var dic={};  
   if(localStorage.getItem('testToDo')!=''){
       dic=localStorage.getItem(localStorage.getItem('testToDo'))
-      
-  }     var sy='';function add(){
-            console.log('calling add function');
-            q=document.getElementById('Question').value;
-            a=document.getElementById('Answer').value;
-            if(q!='' && a!=''){
-                dic[q]=a;
-                console.log(dic);
-            }
-            document.getElementById('Question').value='';
-            document.getElementById('Answer').value='';
-        }
+
+  }    
+  xyz=localStorage.getItem('last_edit');
+  paper=JSON.parse(localStorage.getItem(xyz))
+   sy='';
+   var progress=0
+   document.getElementById('Question').value=Object.keys(paper)[progress];
+   document.getElementById('Answer').value=paper[Object.keys(paper)[progress]]
+   document.getElementById('name').value=localStorage.getItem('last_edit')
+   function add(){
+       if(progress<Object.keys(paper).length){
+      progress+=1
+      dic[document.getElementById('Question').value]=document.getElementById('Answer').value
+        document.getElementById('Question').value=Object.keys(paper)[progress];
+        document.getElementById('Answer').value=paper[Object.keys(paper)[progress]]
+       }
+       else {
+        dic[document.getElementById('Question').value]=document.getElementById('Answer').value
+        document.getElementById('Question').value=''
+        document.getElementById('Answer').value=''
+       }
+}
         function save(){
             localStorage.setItem(document.getElementById('name').value, JSON.stringify(dic));
              sy=document.getElementById('name').value;
         }
-        var obj_csv = {
-    size:0,
-    dataFile:[]
-};
- var my_csv_array;
-function readImage(input) {
-    console.log(input)
- if (input.files && input.files[0]) {
- let reader = new FileReader();
-        reader.readAsBinaryString(input.files[0]);
- reader.onload = function (e) {
- console.log(e);
- obj_csv.size = e.total;
- obj_csv.dataFile = e.target.result
-            console.log(obj_csv.dataFile)
-            parseData(obj_csv.dataFile)  
-            my_csv_array=obj_csv.dataFile;   
-            console.log(my_csv_array.length)
-            my_csv_array=my_csv_array.split(',');
-            ar=String(my_csv_array);
-            my_csv_array=ar.split('\n')
-            console.log(my_csv_array)
-            len=my_csv_array.length
-            for(abc=0; abc<len; abc++){
-                val=my_csv_array[abc];
-                val2=val.split(',')
-                dic[val2[0]]=val2[1]
-                console.log(dic);
-
-            }
- }
- }
-}
-function parseData(data){
-    let csvData = [];
-    let lbreak = data.split("\n");
-    lbreak.forEach(res => {
-        csvData.push(res.split(","));
-    });
-    console.table(csvData);
-}
 function hs(){
     window.location='index.html';
 }

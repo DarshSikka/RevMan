@@ -28,10 +28,13 @@
 <body>
     <center>
     <input id='key'placeholder='public key'>
-    <button onclick='lot()'>Add</button>
+    <button onclick='lot()'>Add</button><button onclick='u_h()'>Home</button>
     
     </center>
     <script>
+        function u_h(){
+            window.location='index.html'
+        }
             var firebaseConfig={apiKey: "AIzaSyDvOKO9zKSH49tdinUIcGW_niHKRDVWfzE",
     authDomain: "dictator-46f42.firebaseapp.com",
     databaseURL: "https://dictator-46f42.firebaseio.com",
